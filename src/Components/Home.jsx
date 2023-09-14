@@ -1,0 +1,23 @@
+import axios from "axios"
+import React from "react"
+import Card from "./Card"
+
+export default function Home(props) {
+
+    const [episodes, setEpisodes] = React.useState()
+
+    React.useEffect(() => {
+        axios("https://rickandmortyapi.com/api/episode")
+            .then(response => setEpisodes(response.data))
+            .catch(error => console.log(error))
+    }, [])
+
+    return (
+        <div>
+            <h2>Episodios</h2>
+            {
+                episodes.results?.map((episode, index) => <Card key={index} episode={episode} />)
+            }
+        </div>
+    )
+}

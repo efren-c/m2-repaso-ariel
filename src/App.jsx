@@ -1,18 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Home from "./Components/Home"
+import Favorites from "./Components/Favorites"
+import Detail from "./Components/Detail"
+import Navbar from './Components/Navbar'
+import Landing from './Components/Landing'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
 function App() {
 	const [count, setCount] = useState(0)
 
+	const { pathname } = useLocation()
+
 	return (
 		<div>
-			<h1>Repaso Módulo 2 EPISODIOS</h1>
-			<hr />
-			<h2>Cohorte FT42b</h2>
-			<h2>Rick & Morty - Episodes</h2>
-			<h3>Ver README.md para ver detalles del proyecto</h3>
+			<h1>Rick & Morty - Episodes</h1>
+			{
+				pathname !== "/" ? <Navbar /> : null
+			}
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<Landing />} />
+				<Route path="/home" element={<Home />} />
+				<Route path="/favorites" element={<Favorites />} />
+				<Route path="/detail/:id" element={<Detail />} />
+			</Routes>
 		</div>
 	)
 }

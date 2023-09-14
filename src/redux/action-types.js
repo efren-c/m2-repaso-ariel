@@ -1,0 +1,5 @@
+export const SET_USER = "SET_USER"
+export const ADD_FAV = "ADD_FAV"
+export const DEL_FAV = "DEL_FAV"
+export const RATING_FAV = "RATING_FAV"
+export const COMPLETED_FAV = "COMPLETED_FAV"
