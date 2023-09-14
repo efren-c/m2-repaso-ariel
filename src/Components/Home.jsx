@@ -4,7 +4,7 @@ import Card from "./Card"
 
 export default function Home(props) {
 
-    const [episodes, setEpisodes] = React.useState()
+    const [episodes, setEpisodes] = React.useState({})
 
     React.useEffect(() => {
         axios("https://rickandmortyapi.com/api/episode")
@@ -14,7 +14,8 @@ export default function Home(props) {
 
     return (
         <div>
-            <h2>Episodios</h2>
+            <h2>Episodes</h2>
+            <hr />
             {
                 episodes.results?.map((episode, index) => <Card key={index} episode={episode} />)
             }
